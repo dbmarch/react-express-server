@@ -8,6 +8,7 @@ var cors = require("cors");
 const port = process.env.PORT || 3001;
 
 const yourOktaDomain = "dev-657184.oktapreview.com";
+
 const oktaJwtVerifier = new OktaJwtVerifier({
   issuer: `https://${yourOktaDomain}/oauth2/default`,
   assertClaims: {

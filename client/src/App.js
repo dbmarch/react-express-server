@@ -1,21 +1,21 @@
-import { Security, ImplicitCallback } from "@okta/okta-react";
+import { Security, SecureRoute, ImplicitCallback } from "@okta/okta-react";
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import MessageList from "./components/MessageList";
-
+import { Container } from "semantic-ui-react";
+import { clientId, yourOktaDomain } from "./util/default-config";
 import logo from "./logo.svg";
 import "./App.css";
+import config from "./util/default-config";
 import Home from "./routes/Home";
+import Messages from "./components/Messages";
+import Navbar from "./containers/Navbar";
+import Profile from "./components/Profile";
 
-const yourOktaDomain = "dev-657184.oktapreview.com";
-const clientId = "0oafvmim6lHM5UqLH0h7";
-
-const config = {
-  issuer: `https://${yourOktaDomain}/oauth2/default`,
-  redirect_uri: window.location.origin + "/implicit/callback",
-  client_id: "{clientId}"
-};
+// const config = {
+//   issuer: `https://${yourOktaDomain}/oauth2/default`,
+//   redirect_uri: window.location.origin + "/implicit/callback",
+//   client_id: "{clientId}"
+// };
 
 class App extends Component {
   state = {
@@ -45,13 +45,17 @@ class App extends Component {
         </p>
         <Router>
           <Security
-            issuer={config.issuer}
-            client_id={config.client_id}
-            redirect_uri={config.redirect_uri}
+            issuer={config.oidc.issuer}
+            client_id={config.oidc.clientId}
+            redirect_uri={config.oidc.redirectUri}
           >
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/implicit/callback" component={ImplicitCallback} />
-            <MessageList />
+            <Navbar />
+            <Container text style={{ marginTop: "7em" }}>
+              <Route path="/" exact component={Home} />
+              <Route path="/implicit/callback" component={ImplicitCallback} />
+              <SecureRoute path="/messages" component={Messages} />
+              <SecureRoute path="/profile" component={Profile} />
+            </Container>
           </Security>
         </Router>
       </div>
