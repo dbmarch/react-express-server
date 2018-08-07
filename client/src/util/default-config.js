@@ -13,6 +13,6 @@ export default {
     scope: "dbmarch@gmail.com"
   },
   resourceServer: {
-    messagesUrl: "http://localhost:8000/api/messages"
+    messagesUrl: "http://localhost:3001/api/messages"
   }
 };
