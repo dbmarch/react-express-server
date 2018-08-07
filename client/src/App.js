@@ -11,6 +11,7 @@ import Messages from "./components/Messages";
 import MessageList from "./components/Messages";
 import Navbar from "./containers/Navbar";
 import Profile from "./components/Profile";
+import './assets/assets.css';
 
 class App extends Component {
   state = {
@@ -52,7 +53,7 @@ class App extends Component {
               <Route path="/implicit/callback" component={ImplicitCallback} />
               <SecureRoute path="/messages" component={Messages} />
               <SecureRoute path="/profile" component={Profile} />
-              <MessageList />
+              <SecureRoute path="/messagelist" component = {MessageList} />
             </Container>
           </Security>
         </Router>

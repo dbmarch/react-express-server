@@ -77,11 +77,13 @@ app.get("/secure", authenticationRequired, (req, res) => {
  * print some messages for the user if they are authenticated
  */
 app.get("/api/messages", authenticationRequired, (req, res) => {
-  res.json([
-    {
-      message: "This message is from an authenticated API!"
+  console.log ('Returning a new secure message');
+  res.json( {
+    messages: [{
+      date: new Date(),
+      text: "This message is from an authenticated API!"
     }
-  ]);
+  ]});
 });
 
 if (process.env.NODE_ENV === "production") {

@@ -16,6 +16,7 @@ import { Header, Icon, Message, Table } from "semantic-ui-react";
 
 import config from "../util/default-config";
 
+
 export default withAuth(
   class Profile extends Component {
     constructor(props) {
@@ -38,7 +39,9 @@ export default withAuth(
             }
           });
 
+          console.log (response.status);
           if (response.status !== 200) {
+
             this.setState({ failed: true });
             return;
           }
@@ -49,6 +52,7 @@ export default withAuth(
             const date = new Date(message.date);
             const day = date.toLocaleDateString();
             const time = date.toLocaleTimeString();
+            console.log ("date", date, "day", day, "time", time);
             index += 1;
             return {
               date: `${day} ${time}`,
@@ -56,8 +60,10 @@ export default withAuth(
               id: `message-${index}`
             };
           });
+
           this.setState({ messages, failed: false });
         } catch (err) {
+
           this.setState({ failed: true });
           /* eslint-disable no-console */
           console.error(err);
@@ -70,6 +76,8 @@ export default withAuth(
         "You've downloaded one of our resource server examples, and it's running on port 8000.",
         "Your resource server example is using the same Okta authorization server (issuer) that you have configured this React application to use."
       ];
+      console.log ("Render", this.state.messages, this.state.failed);
+
       return (
         <div>
           <Header as="h1">
