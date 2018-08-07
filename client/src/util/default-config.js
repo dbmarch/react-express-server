@@ -9,7 +9,7 @@ export default {
   oidc: {
     clientId: "0oafvmim6lHM5UqLH0h7",
     issuer: "https://dev-657184.oktapreview.com/oauth2/default",
-    redirectUri: "http://localhost:3000/implicit/callback",
+    redirectUri: "http://localhost:8080/implicit/callback",
     scope: "dbmarch@gmail.com"
   },
   resourceServer: {

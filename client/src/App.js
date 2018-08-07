@@ -8,6 +8,7 @@ import "./App.css";
 import config from "./util/default-config";
 import Home from "./routes/Home";
 import Messages from "./components/Messages";
+import MessageList from "./components/Messages";
 import Navbar from "./containers/Navbar";
 import Profile from "./components/Profile";
 
@@ -37,7 +38,9 @@ class App extends Component {
         <p className="App-intro">
           The server says.... <b>{this.state.message}</b>
         </p>
+
         <Router>
+          {/* <Route path="/login" component={LoginPage} /> */}
           <Security
             issuer={config.oidc.issuer}
             client_id={config.oidc.clientId}
@@ -49,6 +52,7 @@ class App extends Component {
               <Route path="/implicit/callback" component={ImplicitCallback} />
               <SecureRoute path="/messages" component={Messages} />
               <SecureRoute path="/profile" component={Profile} />
+              <MessageList />
             </Container>
           </Security>
         </Router>
