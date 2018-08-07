@@ -11,12 +11,6 @@ import Messages from "./components/Messages";
 import Navbar from "./containers/Navbar";
 import Profile from "./components/Profile";
 
-// const config = {
-//   issuer: `https://${yourOktaDomain}/oauth2/default`,
-//   redirect_uri: window.location.origin + "/implicit/callback",
-//   client_id: "{clientId}"
-// };
-
 class App extends Component {
   state = {
     message: ""

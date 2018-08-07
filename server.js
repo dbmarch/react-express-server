@@ -7,13 +7,22 @@ var cors = require("cors");
 
 const port = process.env.PORT || 3001;
 
-const yourOktaDomain = "dev-657184.oktapreview.com";
+const config = {
+  resourceServer: {
+    port: 8000,
+    oidc: {
+      issuer: "https://dev-657184.oktapreview.com/oauth2/default"
+    },
+    assertClaims: {
+      aud: "api://default",
+      cid: "0oafvmim6lHM5UqLH0h7"
+    }
+  }
+};
 
 const oktaJwtVerifier = new OktaJwtVerifier({
-  issuer: `https://${yourOktaDomain}/oauth2/default`,
-  assertClaims: {
-    aud: "api://default"
-  }
+  issuer: config.resourceServer.oidc.issuer,
+  assertClaims: config.resourceServer.assertClaims
 });
 
 /**
@@ -84,6 +93,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
-
+// app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(config.resourceServer.port, () => {
+  console.log(`Resource Server Ready on port ${config.resourceServer.port}`);
+});
 module.exports = { app };
