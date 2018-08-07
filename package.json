@@ -11,6 +11,9 @@
     "test-watch": "nodemon --exec \"npm test\"",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
+  "engines": {
+    "node": "10.2.1"
+  },
   "author": "Dave March",
   "license": "MIT",
   "dependencies": {
