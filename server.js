@@ -9,7 +9,7 @@ const port = process.env.PORT || 3001;
 
 const config = {
   resourceServer: {
-    port: 8000,
+    port: port,
     oidc: {
       issuer: "https://dev-657184.oktapreview.com/oauth2/default"
     },
