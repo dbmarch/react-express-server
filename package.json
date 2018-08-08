@@ -18,6 +18,8 @@
   "author": "Dave March",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^1.4.3",
+    "@material-ui/icons": "^2.0.1",
     "@okta/jwt-verifier": "0.0.12",
     "@okta/okta-signin-widget": "^2.10.0",
     "body-parser": "^1.18.3",

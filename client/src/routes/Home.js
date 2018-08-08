@@ -14,6 +14,7 @@ import { withAuth } from "@okta/okta-react";
 import React, { Component } from "react";
 import { Button, Header } from "semantic-ui-react";
 import { checkAuthentication } from "../util/helpers";
+import {Typography} from '@material-ui/core';
 
 export default withAuth(
   class Home extends Component {
@@ -37,6 +38,8 @@ export default withAuth(
     }
 
     render() {
+			const { classes, className } = this.props;
+
       const resourceServerExamples = [
         {
           label: "Node/Express Resource Server Example",
@@ -52,6 +55,7 @@ export default withAuth(
 
       return (
         <div>
+          <Typography variant = "display1">Welcome!</Typography>
           {this.state.authenticated !== null && (
             <div>
               <Header as="h1">Implicit Flow w/ Okta Hosted Login Page</Header>
