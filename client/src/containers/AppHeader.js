@@ -5,9 +5,9 @@ import {
   Typography,
   withStyles
 } from '@material-ui/core';
-import LoginButton from './LoginButton';
-import ProfileButton from './ProfileButton';
-import MessageButton from './MessageButton';
+import LoginButton from '../components/LoginButton';
+import ProfileButton from '../components/ProfileButton';
+import MessageButton from '../components/MessageButton';
 
 const styles = {
     flex: {
