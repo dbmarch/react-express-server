@@ -7,10 +7,11 @@ import logo from "./logo.svg";
 import "./App.css";
 import config from "./util/default-config";
 import Home from "./routes/Home";
+import Profile from "./routes/Profile";
+
 import Messages from "./components/Messages";
 import MessageList from "./components/Messages";
 import Navbar from "./containers/Navbar";
-import Profile from "./components/Profile";
 import AppHeader from './components/AppHeader';
 
 import {

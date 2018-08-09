@@ -13,10 +13,27 @@
 import React, { Component } from "react";
 import { withAuth } from "@okta/okta-react";
 import { Header, Icon, Table } from "semantic-ui-react";
+import {
+  CssBaseline,
+  withStyles,
+} from '@material-ui/core';
 
 import { checkAuthentication } from "../util/helpers";
 
-export default withAuth(
+
+const styles = {
+  table: {
+    width: '50%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    align: "center",
+    border: "2px solid black",
+    background: "lightblue"
+    },
+};
+
+
+export default withStyles(styles)( withAuth(
   class Profile extends Component {
     constructor(props) {
       super(props);
@@ -42,14 +59,15 @@ export default withAuth(
     }
 
     render() {
+      const {classes} = this.props;
       return (
         <div>
           {!this.state.ready && <p>Fetching user profile..</p>}
           {this.state.ready && (
             <div>
               <Header as="h1">
-                <Icon name="drivers license outline" /> My User Profile (ID
-                Token Claims){" "}
+                <i class="far fa-user"></i>
+                   <span style={{padding: 10}}>My User Profile (ID Token Claims){" "}</span>
               </Header>
               <p>
                 Below is the information from your ID token which was obtained
@@ -64,7 +82,7 @@ export default withAuth(
                 <code>&lt;SecureRoute&gt;</code> component, which will ensure
                 that this page cannot be accessed until you have authenticated.
               </p>
-              <Table>
+              <Table className={classes.table}>
                 <thead>
                   <tr>
                     <th>Claim</th>
@@ -91,4 +109,5 @@ export default withAuth(
       );
     }
   }
-);
+));
+ 

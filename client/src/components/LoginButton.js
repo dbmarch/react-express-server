@@ -54,6 +54,7 @@ class LoginButton extends Component {
 
     return (
       <div>
+        LOGIN
         <IconButton onClick={this.handleMenuOpen} color="inherit">
           <AccountCircle />
         </IconButton>
